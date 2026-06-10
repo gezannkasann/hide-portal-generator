@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hide Portal Generator - ひでの日記＆リンク集メーカー</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- 左側：エディタパネル -->
+    <aside class="editor-panel">
+      <header>
+        <span class="eyebrow">Hide Portal Generator</span>
+        <h1>あんちゃん相棒エディター 🎀</h1>
+        <p class="intro">日記とリンクを左で書くと、右でお洒落にプレビューされるよ！最後に直接保存しようね。</p>
+      </header>
+
+      <!-- 日記セクションの編集 -->
+      <section class="edit-section">
+        <h2>1. 日記を書く 📝</h2>
+        <div class="input-group">
+          <label for="diary-title">日記のタイトル</label>
+          <input type="text" id="diary-title" placeholder="例：AIエージェントと一から開発をスタート！">
+        </div>
+        <div class="input-group">
+          <label for="diary-date">日付</label>
+          <input type="date" id="diary-date">
+        </div>
+        <div class="input-group">
+          <label for="diary-body">日記の本文</label>
+          <textarea id="diary-body" rows="6" placeholder="例：今日からあんちゃんと一緒に新しいポータルサイトを作り始めた。一から作ると仕組みがよく分かって面白い！"></textarea>
+        </div>
+        <button type="button" id="btn-add-diary" class="btn-secondary">➕ 日記を追加</button>
+
+        <div class="added-diaries-wrapper">
+          <h3>追加済みの日記</h3>
+          <ul id="added-diaries-list" class="added-links-list">
+            <!-- 動的に追加される -->
+          </ul>
+        </div>
+      </section>
+
+      <!-- リンクカード追加 -->
+      <section class="edit-section">
+        <h2>2. お気に入りリンクを追加 🔗</h2>
+        <div class="input-group">
+          <label for="card-title">カードのタイトル</label>
+          <input type="text" id="card-title" placeholder="例：【YouTube】最新AIまとめ動画">
+        </div>
+        <div class="input-group">
+          <label for="card-url">URL</label>
+          <input type="url" id="card-url" placeholder="https://example.com">
+        </div>
+        <div class="input-group">
+          <label for="card-desc">説明文</label>
+          <input type="text" id="card-desc" placeholder="例：AIの進化スピードが早くて面白い動画だよ！">
+        </div>
+        <div class="input-group">
+          <label for="card-type">カテゴリ</label>
+          <select id="card-type">
+            <option value="video">🎥 動画 (YouTubeなど)</option>
+            <option value="blog">📝 ブログ・Note記事</option>
+            <option value="tool">🛠️ 便利なツール</option>
+          </select>
+        </div>
+        <button type="button" id="btn-add-card" class="btn-secondary">➕ リンクカードを追加</button>
+
+        <div class="added-links-wrapper">
+          <h3>追加済みのリンク</h3>
+          <ul id="added-links-list" class="added-links-list">
+            <!-- 動的に追加される -->
+          </ul>
+        </div>
+      </section>
+
+      <!-- 保存ボタン -->
+      <section class="edit-section save-section">
+        <h2>3. パソコンに直接保存する 💾</h2>
+        <p class="help-text">完成したお洒落なHTMLファイルを、このフォルダ内に直接上書き保存するよ。</p>
+        <button type="button" id="btn-save" class="btn-primary">📂 ポータルサイトを直接保存</button>
+        <div id="save-status" class="save-status"></div>
+      </section>
+    </aside>
+
+    <!-- 右側：リアルタイムプレビュー -->
+    <main class="preview-panel">
+      <div class="preview-header">
+        <span class="preview-badge">Live Preview</span>
+        <span class="preview-tip">※右側のデザインがそのままホームページとして出力されるよ！</span>
+      </div>
+      
+      <!-- プレビュー本体 (書き出されるHTMLの枠組み) -->
+      <div id="portal-preview" class="portal-output">
+        <!-- ここに動的に日記とリンクカードがレンダリングされる -->
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

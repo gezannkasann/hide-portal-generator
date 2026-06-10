@@ -1,0 +1,492 @@
+/* ==========================================
+   🎨 Hide Portal Generator - Style Sheet
+   ========================================== */
+
+/* 全体設定 */
+:root {
+  --bg-editor: #181a1f;
+  --bg-editor-card: #21252b;
+  --text-editor: #abb2bf;
+  --text-editor-bright: #ffffff;
+  --accent-pink: #ff79c6;
+  --accent-blue: #8be9fd;
+  --accent-green: #50fa7b;
+  --accent-purple: #bd93f9;
+  --border-color: #3e4451;
+  
+  /* 出力用ポータルのデザインシステム (グラスモルフィズム風) */
+  --portal-bg: radial-gradient(circle at top left, #2b1842, #0d0614);
+  --portal-card-bg: rgba(255, 255, 255, 0.05);
+  --portal-card-border: rgba(255, 255, 255, 0.1);
+  --portal-text: #e0d5eb;
+  --portal-text-bright: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', 'Noto Sans JP', sans-serif;
+  background-color: var(--bg-editor);
+  color: var(--text-editor);
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* 2カラムレイアウト */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* 左側：エディターパネル */
+.editor-panel {
+  width: 450px;
+  background-color: var(--bg-editor);
+  border-right: 1px solid var(--border-color);
+  padding: 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.3);
+}
+
+.editor-panel header h1 {
+  font-size: 24px;
+  color: var(--text-editor-bright);
+  font-weight: 800;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-pink);
+  font-weight: 600;
+}
+
+.intro {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #828997;
+}
+
+/* 入力セクション */
+.edit-section {
+  background-color: var(--bg-editor-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.edit-section h2 {
+  font-size: 16px;
+  color: var(--text-editor-bright);
+  font-weight: 700;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+  margin-bottom: 4px;
+}
+
+/* フォーム部品 */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #abb2bf;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+  background-color: var(--bg-editor);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: var(--text-editor-bright);
+  font-family: inherit;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: var(--accent-pink);
+  box-shadow: 0 0 0 3px rgba(255, 121, 198, 0.2);
+}
+
+/* ボタン */
+.btn-primary, .btn-secondary {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.1s, opacity 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--accent-pink);
+  color: #181a1f;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  box-shadow: 0 0 12px rgba(255, 121, 198, 0.4);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(139, 233, 253, 0.1);
+}
+
+.btn-primary:active, .btn-secondary:active {
+  transform: scale(0.98);
+}
+
+/* 追加されたリンクの一覧 */
+.added-links-wrapper h3 {
+  font-size: 13px;
+  color: var(--text-editor-bright);
+  margin-bottom: 8px;
+}
+
+.added-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.added-links-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-editor);
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  font-size: 13px;
+}
+
+.added-links-list li button {
+  background: none;
+  border: none;
+  color: #ff5555;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.added-links-list li button:hover {
+  text-decoration: underline;
+}
+
+/* 保存ステータス */
+.save-status {
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  display: none;
+  margin-top: 8px;
+}
+
+/* 右側：プレビューパネル */
+.preview-panel {
+  flex: 1;
+  background: var(--portal-bg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.preview-header {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 13px;
+}
+
+.preview-badge {
+  background-color: var(--accent-green);
+  color: #111;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.preview-tip {
+  color: #6272a4;
+}
+
+/* ==========================================
+   🏡 書き出されるポータルサイトのインライン表示
+   ========================================== */
+.portal-output {
+  flex: 1;
+  overflow-y: auto;
+  padding: 48px;
+  color: var(--portal-text);
+  background: var(--portal-bg);
+}
+
+.portal-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* ポータルのヘッダー */
+.portal-header {
+  border-bottom: 1px solid var(--portal-card-border);
+  padding-bottom: 24px;
+}
+
+.portal-header h1 {
+  font-size: 36px;
+  color: var(--portal-text-bright);
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+.portal-subtitle {
+  font-size: 14px;
+  color: var(--accent-pink);
+  font-weight: 600;
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* 日記セクション */
+.portal-diaries-section h2 {
+  font-size: 20px;
+  color: var(--portal-text-bright);
+  margin-bottom: 24px;
+  border-left: 4px solid var(--accent-pink);
+  padding-left: 12px;
+  margin-top: 0;
+}
+
+.diaries-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.portal-diary-card {
+  background: var(--portal-card-bg);
+  border: 1px solid var(--portal-card-border);
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+}
+
+.portal-diary-card.draft {
+  border-style: dashed;
+  border-color: var(--accent-pink);
+}
+
+.diary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--portal-card-border);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.diary-header h3 {
+  font-size: 18px;
+  color: var(--portal-text-bright);
+  margin: 0;
+}
+
+.draft-badge {
+  background-color: var(--accent-pink);
+  color: #111;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.diary-date {
+  font-size: 14px;
+  color: var(--accent-pink);
+  font-weight: 600;
+}
+
+.diary-body {
+  font-size: 15px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+
+/* リンク集セクション */
+.portal-links-section h2 {
+  font-size: 20px;
+  color: var(--portal-text-bright);
+  margin-bottom: 24px;
+  border-left: 4px solid var(--accent-blue);
+  padding-left: 12px;
+  margin-top: 0;
+}
+
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+/* リンクカード本体（グラスモルフィズム） */
+.portal-card {
+  background: var(--portal-card-bg);
+  border: 1px solid var(--portal-card-border);
+  border-radius: 16px;
+  padding: 24px;
+  text-decoration: none;
+  color: var(--portal-text);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.3s, 
+              border-color 0.3s;
+}
+
+/* カードのホバーエフェクト（ネオン＆リフトアップ） */
+.portal-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-blue);
+  box-shadow: 0 10px 20px rgba(139, 233, 253, 0.15),
+              0 0 20px rgba(139, 233, 253, 0.05);
+  color: var(--portal-text-bright);
+}
+
+.portal-card.video:hover {
+  border-color: var(--accent-pink);
+  box-shadow: 0 10px 20px rgba(255, 121, 198, 0.15),
+              0 0 20px rgba(255, 121, 198, 0.05);
+}
+
+.portal-card.tool:hover {
+  border-color: var(--accent-green);
+  box-shadow: 0 10px 20px rgba(80, 250, 123, 0.15),
+              0 0 20px rgba(80, 250, 123, 0.05);
+}
+
+/* 動画埋め込み用カードの個別指定 */
+.portal-card.video-card {
+  cursor: default;
+  text-decoration: none;
+}
+
+.portal-card.video-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-pink);
+  box-shadow: 0 6px 12px rgba(255, 121, 198, 0.1);
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 ratio */
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  background: #000;
+  border: 1px solid var(--portal-card-border);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.card-icon {
+  font-size: 24px;
+}
+
+.portal-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--portal-text-bright);
+  margin: 0;
+}
+
+.portal-card p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #a496b8;
+  margin: 0;
+}
+
+.card-arrow {
+  margin-top: auto;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-blue);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.portal-card.video .card-arrow, .portal-card.video-card .card-arrow { color: var(--accent-pink); }
+.portal-card.tool .card-arrow { color: var(--accent-green); }
+
+/* フッター */
+.portal-footer {
+  margin-top: 48px;
+  border-top: 1px solid var(--portal-card-border);
+  padding-top: 24px;
+  text-align: center;
+  font-size: 12px;
+  color: #6272a4;
+}
